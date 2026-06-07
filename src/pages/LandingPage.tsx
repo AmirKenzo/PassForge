@@ -392,7 +392,7 @@ export function LandingPage() {
                     key={platform.label}
                     href={platform.href}
                     download
-                    className="group block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="group focus-visible:ring-ring block rounded-xl focus-visible:ring-2 focus-visible:outline-none"
                     aria-label={`${platform.cta} — latest release`}
                   >
                     {card}
@@ -401,7 +401,7 @@ export function LandingPage() {
                   <Link
                     key={platform.label}
                     to={platform.href}
-                    className="group block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="group focus-visible:ring-ring block rounded-xl focus-visible:ring-2 focus-visible:outline-none"
                     aria-label={platform.cta}
                   >
                     {card}

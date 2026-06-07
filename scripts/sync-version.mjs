@@ -17,4 +17,6 @@ const cargo = readFileSync(cargoPath, 'utf8').replace(
 );
 writeFileSync(cargoPath, cargo);
 
+writeFileSync(join(root, 'public/build-version.txt'), `${version}\n`);
+
 console.log(`Synced app version to ${version}`);
