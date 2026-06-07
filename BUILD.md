@@ -36,16 +36,27 @@ Restart terminal after install, then run `npm run tauri:build` again.
 - Node.js 20+
 
 ### GitHub Actions (no local Android Studio / Rust needed)
-Every push to `main` runs `.github/workflows/build-native.yml` and produces:
-- **Windows:** NSIS installer (`.exe`) + MSI
-- **Android:** debug APK (`app-debug.apk`)
 
-**Download builds:**
-1. Open your repo on GitHub → **Actions**
-2. Click the latest **Build Native Apps** run
-3. Scroll to **Artifacts** at the bottom and download
+Workflow: `.github/workflows/build-native.yml` (**Release Native Apps**)
 
-You can also trigger manually: **Actions → Build Native Apps → Run workflow**.
+Runs only when:
+- You push a **tag** (`v1.0.0`, `v1.0.1`, …)
+- You change **`package.json`** version on `main`
+- You trigger manually: **Actions → Release Native Apps → Run workflow**
+
+Creates a **GitHub Release** with:
+- Windows NSIS installer (`.exe`) + MSI
+- Android debug APK (`app-debug.apk`)
+
+**Recommended release flow:**
+```bash
+# 1. Bump version in package.json (e.g. 1.0.0 → 1.0.1)
+# 2. Commit and tag
+git add package.json
+git commit -m "chore: release v1.0.1"
+git tag v1.0.1
+git push origin main --tags
+```
 
 ---
 

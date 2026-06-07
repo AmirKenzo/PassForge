@@ -114,14 +114,12 @@ npm run typecheck     # TypeScript check
 
 You do **not** need Android Studio or Rust locally if you use GitHub Actions.
 
-Push to `main` → workflow **Build Native Apps** runs automatically.
+Release workflow runs when you:
+- Push a version **tag** (`git tag v1.0.0 && git push --tags`)
+- Bump **`package.json`** version on `main`
+- Run **Actions → Release Native Apps** manually
 
-| Artifact | Contents |
-|----------|----------|
-| `passforge-windows-x64` | `.exe` installer + `.msi` |
-| `passforge-android-debug` | `app-debug.apk` for phone testing |
-
-Download from: **GitHub → Actions → latest run → Artifacts**
+Each release publishes `.exe`, `.msi`, and `.apk` on **GitHub → Releases**.
 
 See [BUILD.md](BUILD.md) for local build instructions.
 

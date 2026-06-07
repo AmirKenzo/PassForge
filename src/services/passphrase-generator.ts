@@ -20,7 +20,7 @@ function formatWord(word: string, capitalize: boolean): string {
 
 export function generatePassphrase(config: PassphraseConfig): string {
   const words = pickRandomMultiple([...DICEWARE_WORDLIST], config.wordCount);
-  let parts = words.map((w) => formatWord(w, config.capitalize));
+  const parts = words.map((w) => formatWord(w, config.capitalize));
 
   if (config.includeNumbers) {
     const num = getSecureRandomInt(900) + 100;
