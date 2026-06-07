@@ -144,12 +144,39 @@ jobs:
           echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
           echo "Release tag: ${TAG}"
 
+      - name: Prepare stable release filenames
+        shell: bash
+        run: |
+          cd release-assets
+          EXE=$(find . -name '*-setup.exe' | head -1)
+          APK=$(find . -name 'PassForge-*.apk' | head -1)
+          MSI=$(find . -name '*.msi' | head -1)
+          if [ -z "$EXE" ]; then echo "Windows installer not found"; exit 1; fi
+          if [ -z "$APK" ]; then echo "Android APK not found"; exit 1; fi
+          cp "$EXE" PassForge-Windows-x64-setup.exe
+          cp "$APK" PassForge-Android.apk
+          if [ -n "$MSI" ]; then cp "$MSI" PassForge-Windows-x64.msi; fi
+          ls -la
+
+      - name: Collect release files
+        id: files
+        shell: bash
+        run: |
+          {
+            echo "release-assets/PassForge-Windows-x64-setup.exe"
+            echo "release-assets/PassForge-Android.apk"
+            if [ -f release-assets/PassForge-Windows-x64.msi ]; then
+              echo "release-assets/PassForge-Windows-x64.msi"
+            fi
+          } > release-files.txt
+          cat release-files.txt
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.meta.outputs.tag }}
           name: PassForge ${{ steps.meta.outputs.tag }}
           generate_release_notes: true
-          files: release-assets/**/*
+          files: release-files.txt
           draft: false
           prerelease: false
