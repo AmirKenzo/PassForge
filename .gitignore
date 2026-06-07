@@ -1,0 +1,95 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+dist-ssr/
+dev-dist/
+build/
+*.tsbuildinfo
+
+# Vite
+*.local
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+google-services.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor & IDE
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.code-workspace
+.cursor/
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Test & coverage
+coverage/
+.nyc_output/
+
+# Cache & temp
+.cache/
+.temp/
+tmp/
+*.swp
+*.swo
+*~
+
+# Deploy hosts
+.vercel/
+.turbo/
+
+# PWA dev
+dev-dist/
+
+# ── Tauri / Rust ──────────────────────────────────────────────
+src-tauri/target/
+src-tauri/gen/schemas/
+*.pdb
+
+# ── Capacitor / Android ───────────────────────────────────────
+*.apk
+*.aab
+*.dex
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+android/.idea/
+android/capacitor-cordova-android-plugins/
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+android/app/src/main/res/xml/config.xml
+
+# ── Capacitor / iOS (future) ──────────────────────────────────
+ios/App/build/
+ios/App/Pods/
+ios/App/public/
+
+# ── Installers copied outside target/ (local testing) ─────────
+*.msi
