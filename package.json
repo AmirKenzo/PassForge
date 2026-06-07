@@ -1,7 +1,7 @@
 {
   "name": "passforge",
   "private": true,
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "description": "Privacy-first, open-source security toolkit — everything runs locally in your browser.",
   "author": "Amir Kenzo",
