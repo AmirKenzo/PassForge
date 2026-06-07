@@ -17,17 +17,9 @@ export function GeneratedOutput({
   mono = true,
 }: GeneratedOutputProps) {
   return (
-    <div
-      className={cn(
-        'bg-muted/50 flex items-center gap-2 rounded-lg border p-3',
-        className,
-      )}
-    >
+    <div className={cn('bg-muted/50 flex items-center gap-2 rounded-lg border p-3', className)}>
       <output
-        className={cn(
-          'flex-1 break-all',
-          mono && 'font-mono text-sm',
-        )}
+        className={cn('flex-1 break-all', mono && 'font-mono text-sm')}
         aria-live="polite"
         aria-atomic="true"
       >

@@ -9,14 +9,18 @@ import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { ToolPageLayout } from '@/components/shared/ToolPageLayout';
 import { GeneratedList } from '@/components/shared/GeneratedOutput';
-import { ExportButton } from '@/components/shared/ExportMenu';
 import { generatePasswords } from '@/services/password-generator';
 import { useToolStore } from '@/store/tool-store';
 import { useSettingsStore } from '@/store/settings-store';
 
 export function PasswordGeneratorPage() {
-  const { passwordConfig, setPasswordConfig, passwordHistory, addToPasswordHistory, clearPasswordHistory } =
-    useToolStore();
+  const {
+    passwordConfig,
+    setPasswordConfig,
+    passwordHistory,
+    addToPasswordHistory,
+    clearPasswordHistory,
+  } = useToolStore();
   const { passwordFavorites, addPasswordFavorite, removePasswordFavorite } = useSettingsStore();
   const [passwords, setPasswords] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -32,13 +36,10 @@ export function PasswordGeneratorPage() {
     }
   }, [passwordConfig, addToPasswordHistory]);
 
-  const exportItems = passwords.map((p) => ({ value: p }));
-
   return (
     <ToolPageLayout
       title="Password Generator"
       description="Generate strong, customizable passwords with advanced character options."
-      actions={<ExportButton items={exportItems} baseName="passwords" />}
     >
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>
@@ -88,9 +89,7 @@ export function PasswordGeneratorPage() {
                   <Checkbox
                     id={key}
                     checked={passwordConfig[key]}
-                    onCheckedChange={(checked) =>
-                      setPasswordConfig({ [key]: checked === true })
-                    }
+                    onCheckedChange={(checked) => setPasswordConfig({ [key]: checked === true })}
                   />
                   <Label htmlFor={key} className="text-sm font-normal">
                     {label}
@@ -133,9 +132,7 @@ export function PasswordGeneratorPage() {
                       min={0}
                       max={passwordConfig.length}
                       value={passwordConfig[key]}
-                      onChange={(e) =>
-                        setPasswordConfig({ [key]: parseInt(e.target.value) || 0 })
-                      }
+                      onChange={(e) => setPasswordConfig({ [key]: parseInt(e.target.value) || 0 })}
                     />
                   </div>
                 ))}
@@ -156,7 +153,11 @@ export function PasswordGeneratorPage() {
               </Button>
             </div>
 
-            {error && <p className="text-destructive text-sm" role="alert">{error}</p>}
+            {error && (
+              <p className="text-destructive text-sm" role="alert">
+                {error}
+              </p>
+            )}
           </CardContent>
         </Card>
 
@@ -181,7 +182,10 @@ export function PasswordGeneratorPage() {
               </CardHeader>
               <CardContent className="space-y-2">
                 {passwordFavorites.map((fav, i) => (
-                  <div key={i} className="flex items-center justify-between rounded-lg border p-2 text-sm">
+                  <div
+                    key={i}
+                    className="flex items-center justify-between rounded-lg border p-2 text-sm"
+                  >
                     <button
                       className="hover:text-primary text-left"
                       onClick={() => {
@@ -196,12 +200,15 @@ export function PasswordGeneratorPage() {
                         }
                       }}
                     >
-                      {fav.length} chars · {[
+                      {fav.length} chars ·{' '}
+                      {[
                         fav.uppercase && 'A-Z',
                         fav.lowercase && 'a-z',
                         fav.numbers && '0-9',
                         fav.symbols && 'symbols',
-                      ].filter(Boolean).join(', ')}
+                      ]
+                        .filter(Boolean)
+                        .join(', ')}
                     </button>
                     <Button variant="ghost" size="icon" onClick={() => removePasswordFavorite(i)}>
                       <Trash2 className="h-4 w-4" />
@@ -221,10 +228,14 @@ export function PasswordGeneratorPage() {
                 </Button>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-2 text-xs">Session only — cleared on page close</p>
+                <p className="text-muted-foreground mb-2 text-xs">
+                  Session only — cleared on page close
+                </p>
                 <div className="max-h-none space-y-1 font-mono text-xs md:max-h-40 md:overflow-y-auto">
                   {passwordHistory.slice(0, 10).map((p, i) => (
-                    <div key={i} className="truncate">{p}</div>
+                    <div key={i} className="truncate">
+                      {p}
+                    </div>
                   ))}
                 </div>
               </CardContent>

@@ -133,9 +133,7 @@ export function SecurityUtilitiesPage() {
                   className="font-mono text-sm"
                 />
               </div>
-              <Button onClick={handleB64}>
-                {b64Mode === 'encode' ? 'Encode' : 'Decode'}
-              </Button>
+              <Button onClick={handleB64}>{b64Mode === 'encode' ? 'Encode' : 'Decode'}</Button>
               {b64Output && (
                 <div className="bg-muted/50 flex items-start gap-2 rounded-lg border p-3">
                   <output className="flex-1 font-mono text-sm break-all">{b64Output}</output>

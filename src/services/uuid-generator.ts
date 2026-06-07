@@ -18,7 +18,8 @@ function formatUuid(bytes: Uint8Array, version: 4 | 7): string {
     const timeLow = hex.slice(0, 8);
     const timeMid = hex.slice(8, 12);
     const timeHi = '4' + hex.slice(13, 16);
-    const clockSeq = ((parseInt(hex.slice(16, 18), 16) & 0x3f) | 0x80).toString(16) + hex.slice(18, 20);
+    const clockSeq =
+      ((parseInt(hex.slice(16, 18), 16) & 0x3f) | 0x80).toString(16) + hex.slice(18, 20);
     const node = hex.slice(20, 32);
     return `${timeLow}-${timeMid}-${timeHi}-${clockSeq}-${node}`;
   }

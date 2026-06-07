@@ -8,11 +8,7 @@ import { Slider } from '@/components/ui/slider';
 import { Input } from '@/components/ui/input';
 import { ToolPageLayout } from '@/components/shared/ToolPageLayout';
 import { GeneratedList } from '@/components/shared/GeneratedOutput';
-import { ExportButton } from '@/components/shared/ExportMenu';
-import {
-  DEFAULT_PASSPHRASE_CONFIG,
-  generatePassphrases,
-} from '@/services/passphrase-generator';
+import { DEFAULT_PASSPHRASE_CONFIG, generatePassphrases } from '@/services/passphrase-generator';
 import type { PassphraseConfig } from '@/types/generators';
 
 export function PassphraseGeneratorPage() {
@@ -27,7 +23,6 @@ export function PassphraseGeneratorPage() {
     <ToolPageLayout
       title="Passphrase Generator"
       description="Generate memorable Diceware-style passphrases for high entropy and easy recall."
-      actions={<ExportButton items={passphrases.map((p) => ({ value: p }))} baseName="passphrases" />}
     >
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>

@@ -11,7 +11,13 @@ interface CopyButtonProps {
   label?: string;
 }
 
-export function CopyButton({ text, id, className, size = 'icon', label = 'Copy' }: CopyButtonProps) {
+export function CopyButton({
+  text,
+  id,
+  className,
+  size = 'icon',
+  label = 'Copy',
+}: CopyButtonProps) {
   const { copy, copied } = useCopy();
 
   return (
@@ -22,11 +28,7 @@ export function CopyButton({ text, id, className, size = 'icon', label = 'Copy' 
       onClick={() => copy(text, id)}
       aria-label={copied ? 'Copied' : label}
     >
-      {copied ? (
-        <Check className="text-success h-4 w-4" />
-      ) : (
-        <Copy className="h-4 w-4" />
-      )}
+      {copied ? <Check className="text-success h-4 w-4" /> : <Copy className="h-4 w-4" />}
       {size !== 'icon' && <span>{copied ? 'Copied!' : label}</span>}
     </Button>
   );

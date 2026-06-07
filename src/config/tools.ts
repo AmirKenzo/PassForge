@@ -96,14 +96,3 @@ export const TOOLS: ToolDefinition[] = [
 export function getToolById(id: string): ToolDefinition | undefined {
   return TOOLS.find((t) => t.id === id);
 }
-
-export function searchTools(query: string): ToolDefinition[] {
-  const q = query.toLowerCase().trim();
-  if (!q) return TOOLS;
-  return TOOLS.filter(
-    (t) =>
-      t.name.toLowerCase().includes(q) ||
-      t.description.toLowerCase().includes(q) ||
-      t.keywords.some((k) => k.includes(q)),
-  );
-}

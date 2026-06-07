@@ -18,15 +18,12 @@ export default {
     copy: 'Copy',
     copied: 'Copied!',
     regenerate: 'Regenerate',
-    export: 'Export',
-    import: 'Import',
     generate: 'Generate',
     clear: 'Clear',
     save: 'Save',
     cancel: 'Cancel',
     length: 'Length',
     count: 'Count',
-    searchTools: 'Search tools...',
     language: 'Language',
   },
   landing: {
@@ -41,10 +38,10 @@ export default {
     featuresSubtitle: 'professional security tools, zero compromises on privacy.',
     privacyTitle: 'Privacy First, Always',
     privacySubtitle:
-      'PassForge was built on a single principle: your secrets stay yours. We don\'t have servers to breach, databases to leak, or analytics to opt out of — because none of that exists.',
+      "PassForge was built on a single principle: your secrets stay yours. We don't have servers to breach, databases to leak, or analytics to opt out of — because none of that exists.",
     whyTitle: 'Why PassForge?',
     whySubtitle:
-      'Most online password generators send your data to remote servers. PassForge is different — it\'s a professional-grade toolkit that respects your privacy by design.',
+      "Most online password generators send your data to remote servers. PassForge is different — it's a professional-grade toolkit that respects your privacy by design.",
     openSourceTitle: 'Open Source',
     openSourceSubtitle:
       'PassForge is MIT licensed. Audit the code, report issues, submit PRs, and help make security tools accessible to everyone.',

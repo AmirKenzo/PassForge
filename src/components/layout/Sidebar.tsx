@@ -42,16 +42,14 @@ export function Sidebar() {
   return (
     <aside
       className={cn(
-        'bg-card border-border fixed inset-y-0 left-0 z-40 hidden flex-col border-r transition-all duration-300 safe-top md:flex',
+        'bg-card border-border safe-top fixed inset-y-0 left-0 z-40 hidden flex-col border-r transition-all duration-300 md:flex',
         sidebarCollapsed ? 'w-16' : 'w-64',
       )}
       aria-label="Sidebar navigation"
     >
       <div className="flex h-14 items-center gap-2 px-4">
         <Shield className="text-primary h-6 w-6 shrink-0" />
-        {!sidebarCollapsed && (
-          <span className="text-lg font-bold tracking-tight">PassForge</span>
-        )}
+        {!sidebarCollapsed && <span className="text-lg font-bold tracking-tight">PassForge</span>}
       </div>
 
       <Separator />
@@ -75,7 +73,7 @@ export function Sidebar() {
           </NavLink>
 
           {!sidebarCollapsed && (
-            <p className="text-muted-foreground px-3 pt-4 pb-1 text-xs font-semibold uppercase tracking-wider">
+            <p className="text-muted-foreground px-3 pt-4 pb-1 text-xs font-semibold tracking-wider uppercase">
               Tools
             </p>
           )}
@@ -112,7 +110,11 @@ export function Sidebar() {
           onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
           aria-label={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         >
-          {sidebarCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
+          {sidebarCollapsed ? (
+            <ChevronRight className="h-4 w-4" />
+          ) : (
+            <ChevronLeft className="h-4 w-4" />
+          )}
         </Button>
       </div>
     </aside>

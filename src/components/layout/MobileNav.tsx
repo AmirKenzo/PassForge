@@ -16,7 +16,7 @@ export function MobileNav() {
         aria-hidden="true"
       />
       <nav
-        className="bg-card border-border fixed inset-x-0 top-14 z-50 max-h-[calc(100vh-3.5rem)] overflow-y-auto border-b p-4 md:hidden safe-bottom"
+        className="bg-card border-border safe-bottom fixed inset-x-0 top-14 z-50 max-h-[calc(100vh-3.5rem)] overflow-y-auto border-b p-4 md:hidden"
         aria-label="Mobile navigation"
       >
         <div className="space-y-1">

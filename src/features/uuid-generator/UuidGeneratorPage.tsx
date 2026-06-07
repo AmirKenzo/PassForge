@@ -7,7 +7,6 @@ import { Slider } from '@/components/ui/slider';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ToolPageLayout } from '@/components/shared/ToolPageLayout';
 import { GeneratedList } from '@/components/shared/GeneratedOutput';
-import { ExportButton } from '@/components/shared/ExportMenu';
 import { DEFAULT_UUID_CONFIG, generateUuids } from '@/services/uuid-generator';
 import type { UuidConfig } from '@/types/generators';
 
@@ -28,7 +27,6 @@ export function UuidGeneratorPage() {
     <ToolPageLayout
       title="UUID Generator"
       description="Generate UUID v4 (random) and v7 (time-ordered) identifiers."
-      actions={<ExportButton items={uuids.map((u) => ({ value: u, metadata: { version: config.version } }))} baseName="uuids" />}
     >
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>
@@ -36,10 +34,19 @@ export function UuidGeneratorPage() {
             <CardTitle className="text-base">Options</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
-            <Tabs value={config.version} onValueChange={(v) => setConfig((c) => ({ ...c, version: v as UuidConfig['version'] }))}>
+            <Tabs
+              value={config.version}
+              onValueChange={(v) =>
+                setConfig((c) => ({ ...c, version: v as UuidConfig['version'] }))
+              }
+            >
               <TabsList className="w-full">
-                <TabsTrigger value="v4" className="flex-1">UUID v4</TabsTrigger>
-                <TabsTrigger value="v7" className="flex-1">UUID v7</TabsTrigger>
+                <TabsTrigger value="v4" className="flex-1">
+                  UUID v4
+                </TabsTrigger>
+                <TabsTrigger value="v7" className="flex-1">
+                  UUID v7
+                </TabsTrigger>
               </TabsList>
               <TabsContent value="v4" className="text-muted-foreground mt-3 text-sm">
                 Random UUID — universally unique, no ordering guarantees.

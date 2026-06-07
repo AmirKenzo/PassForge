@@ -22,7 +22,7 @@ export function LandingMobileMenu() {
         aria-hidden="true"
       />
       <nav
-        className="bg-card border-border fixed inset-x-0 top-14 z-50 border-b p-4 md:hidden safe-bottom"
+        className="bg-card border-border safe-bottom fixed inset-x-0 top-14 z-50 border-b p-4 md:hidden"
         aria-label="Mobile navigation"
       >
         <div className="space-y-1">

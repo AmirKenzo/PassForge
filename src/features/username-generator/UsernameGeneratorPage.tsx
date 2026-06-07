@@ -14,11 +14,7 @@ import {
 } from '@/components/ui/select';
 import { ToolPageLayout } from '@/components/shared/ToolPageLayout';
 import { GeneratedList } from '@/components/shared/GeneratedOutput';
-import { ExportButton } from '@/components/shared/ExportMenu';
-import {
-  DEFAULT_USERNAME_CONFIG,
-  generateUsernames,
-} from '@/services/username-generator';
+import { DEFAULT_USERNAME_CONFIG, generateUsernames } from '@/services/username-generator';
 import type { UsernameConfig } from '@/types/generators';
 
 export function UsernameGeneratorPage() {
@@ -33,7 +29,6 @@ export function UsernameGeneratorPage() {
     <ToolPageLayout
       title="Username Generator"
       description="Create unique usernames with adjective-noun combinations or random styles."
-      actions={<ExportButton items={usernames.map((u) => ({ value: u }))} baseName="usernames" />}
     >
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>

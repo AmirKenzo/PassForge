@@ -127,8 +127,7 @@ export function LandingPage() {
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.35]"
           style={{
-            backgroundImage:
-              'radial-gradient(circle at 1px 1px, var(--border) 1px, transparent 0)',
+            backgroundImage: 'radial-gradient(circle at 1px 1px, var(--border) 1px, transparent 0)',
             backgroundSize: '24px 24px',
           }}
         />
@@ -141,12 +140,11 @@ export function LandingPage() {
               Privacy-First · Open Source · MIT
             </Badge>
 
-            <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              Forge secure credentials.{' '}
-              <span className="text-primary">Keep your privacy.</span>
+            <h1 className="text-4xl font-bold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+              Forge secure credentials. <span className="text-primary">Keep your privacy.</span>
             </h1>
 
-            <p className="text-muted-foreground text-balance mt-6 max-w-xl text-lg">
+            <p className="text-muted-foreground mt-6 max-w-xl text-lg text-balance">
               PassForge is a professional security toolkit for passwords, passphrases, tokens,
               hashes, and more — generated entirely on your device.
             </p>
@@ -248,7 +246,7 @@ export function LandingPage() {
           <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {PILLARS.map((pillar, i) => (
               <motion.div key={pillar.title} {...fadeUp} transition={{ delay: i * 0.08 }}>
-                <Card className="h-full border-transparent bg-muted/30">
+                <Card className="bg-muted/30 h-full border-transparent">
                   <CardHeader>
                     <pillar.icon className="text-primary mb-2 h-8 w-8" />
                     <CardTitle className="text-base">{pillar.title}</CardTitle>
@@ -367,8 +365,8 @@ export function LandingPage() {
             <Github className="text-primary mx-auto mb-6 h-12 w-12" />
             <h2 className="text-3xl font-bold">Open source & auditable</h2>
             <p className="text-muted-foreground mt-4 text-lg">
-              MIT licensed. Audit the code, report issues, submit PRs, and help make security
-              tools accessible to everyone.
+              MIT licensed. Audit the code, report issues, submit PRs, and help make security tools
+              accessible to everyone.
             </p>
             <Button className="mt-8" variant="outline" size="lg" asChild>
               <a

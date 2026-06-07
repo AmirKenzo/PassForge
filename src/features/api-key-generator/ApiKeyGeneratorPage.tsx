@@ -7,7 +7,6 @@ import { Input } from '@/components/ui/input';
 import { Slider } from '@/components/ui/slider';
 import { ToolPageLayout } from '@/components/shared/ToolPageLayout';
 import { GeneratedList } from '@/components/shared/GeneratedOutput';
-import { ExportButton } from '@/components/shared/ExportMenu';
 import { DEFAULT_API_KEY_CONFIG, generateApiKeys } from '@/services/api-key-generator';
 import type { ApiKeyConfig } from '@/types/generators';
 
@@ -23,7 +22,6 @@ export function ApiKeyGeneratorPage() {
     <ToolPageLayout
       title="API Key Generator"
       description="Generate secure API keys with customizable length and prefix."
-      actions={<ExportButton items={keys.map((k) => ({ value: k }))} baseName="api-keys" />}
     >
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>

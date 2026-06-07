@@ -13,7 +13,6 @@ import {
 } from '@/components/ui/select';
 import { ToolPageLayout } from '@/components/shared/ToolPageLayout';
 import { GeneratedList } from '@/components/shared/GeneratedOutput';
-import { ExportButton } from '@/components/shared/ExportMenu';
 import { DEFAULT_TOKEN_CONFIG, generateTokens } from '@/services/token-generator';
 import type { TokenConfig } from '@/types/generators';
 
@@ -29,7 +28,6 @@ export function TokenGeneratorPage() {
     <ToolPageLayout
       title="Token Generator"
       description="Generate secure random tokens in hex, base64, or alphanumeric formats."
-      actions={<ExportButton items={tokens.map((t) => ({ value: t, metadata: { format: config.format } }))} baseName="tokens" />}
     >
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>

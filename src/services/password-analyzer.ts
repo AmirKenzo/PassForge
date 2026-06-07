@@ -30,9 +30,12 @@ function estimateCrackTime(entropy: number): { seconds: number; label: string } 
   if (seconds < 3600) return { seconds, label: `${Math.round(seconds / 60)} minutes` };
   if (seconds < 86400) return { seconds, label: `${Math.round(seconds / 3600)} hours` };
   if (seconds < 31536000) return { seconds, label: `${Math.round(seconds / 86400)} days` };
-  if (seconds < 31536000 * 100) return { seconds, label: `${Math.round(seconds / 31536000)} years` };
-  if (seconds < 31536000 * 1e6) return { seconds, label: `${Math.round(seconds / 31536000 / 1000)} thousand years` };
-  if (seconds < 31536000 * 1e9) return { seconds, label: `${Math.round(seconds / 31536000 / 1e6)} million years` };
+  if (seconds < 31536000 * 100)
+    return { seconds, label: `${Math.round(seconds / 31536000)} years` };
+  if (seconds < 31536000 * 1e6)
+    return { seconds, label: `${Math.round(seconds / 31536000 / 1000)} thousand years` };
+  if (seconds < 31536000 * 1e9)
+    return { seconds, label: `${Math.round(seconds / 31536000 / 1e6)} million years` };
   return { seconds, label: 'Centuries or more' };
 }
 

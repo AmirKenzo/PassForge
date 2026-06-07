@@ -1,10 +1,5 @@
 import type { UsernameConfig } from '@/types/generators';
-import {
-  ADJECTIVES,
-  NOUNS,
-  TECH_PREFIXES,
-  TECH_SUFFIXES,
-} from '@/assets/wordlists/username';
+import { ADJECTIVES, NOUNS, TECH_PREFIXES, TECH_SUFFIXES } from '@/assets/wordlists/username';
 import { getSecureRandomInt, pickRandom } from '@/utils/crypto';
 
 export const DEFAULT_USERNAME_CONFIG: UsernameConfig = {

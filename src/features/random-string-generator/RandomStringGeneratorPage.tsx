@@ -7,7 +7,6 @@ import { Input } from '@/components/ui/input';
 import { Slider } from '@/components/ui/slider';
 import { ToolPageLayout } from '@/components/shared/ToolPageLayout';
 import { GeneratedList } from '@/components/shared/GeneratedOutput';
-import { ExportButton } from '@/components/shared/ExportMenu';
 import {
   DEFAULT_RANDOM_STRING_CONFIG,
   generateRandomStrings,
@@ -15,7 +14,10 @@ import {
 import type { RandomStringConfig } from '@/types/generators';
 
 const PRESETS = [
-  { label: 'Alphanumeric', charset: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789' },
+  {
+    label: 'Alphanumeric',
+    charset: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
+  },
   { label: 'Hex', charset: '0123456789abcdef' },
   { label: 'Uppercase', charset: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' },
   { label: 'Lowercase', charset: 'abcdefghijklmnopqrstuvwxyz' },
@@ -39,7 +41,6 @@ export function RandomStringGeneratorPage() {
     <ToolPageLayout
       title="Random String Generator"
       description="Generate random strings with fully customizable character sets."
-      actions={<ExportButton items={strings.map((s) => ({ value: s }))} baseName="random-strings" />}
     >
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>

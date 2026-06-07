@@ -39,8 +39,6 @@
 ### Platform
 - Dark / Light / System theme with persistence
 - Progressive Web App (offline, installable)
-- Export data as TXT, CSV, JSON
-- Import/export settings as JSON
 - Responsive layout with sidebar navigation
 - Keyboard accessible, ARIA labels, screen reader support
 - Route-based code splitting for fast loads
@@ -211,7 +209,7 @@ Platform abstraction lives in `src/services/platform.ts` and `src/utils/clipboar
 
 | Version | Features |
 |---------|----------|
-| **v1.0** _(current)_ | All core tools, PWA, themes, export/import |
+| **v1.0** _(current)_ | All core tools, PWA, themes |
 | **v1.5** | Secure local vault, encrypted storage, custom wordlists |
 | **v2.0** | Browser extension, password manager mode, plugins, i18n |
 | **v3.0** | E2E encrypted sync, team features, secure notes, native mobile |

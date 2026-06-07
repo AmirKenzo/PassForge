@@ -16,7 +16,7 @@ export function MobileBottomNav() {
 
   return (
     <nav
-      className="bg-card/95 border-border fixed inset-x-0 bottom-0 z-50 flex items-stretch justify-around border-t backdrop-blur-sm md:hidden safe-bottom"
+      className="bg-card/95 border-border safe-bottom fixed inset-x-0 bottom-0 z-50 flex items-stretch justify-around border-t backdrop-blur-sm md:hidden"
       aria-label="Bottom navigation"
     >
       {ITEMS.map((item) => {

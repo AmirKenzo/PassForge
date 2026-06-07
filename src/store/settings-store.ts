@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { PasswordGeneratorConfig } from '@/types/generators';
-import { DEFAULT_PASSWORD_CONFIG } from '@/services/password-generator';
 
 export type ThemeMode = 'light' | 'dark' | 'system';
 
@@ -13,7 +12,6 @@ interface SettingsState {
   setSidebarCollapsed: (collapsed: boolean) => void;
   addPasswordFavorite: (config: PasswordGeneratorConfig) => void;
   removePasswordFavorite: (index: number) => void;
-  importSettings: (data: Record<string, unknown>) => void;
 }
 
 export const useSettingsStore = create<SettingsState>()(
@@ -36,13 +34,6 @@ export const useSettingsStore = create<SettingsState>()(
         set((state) => ({
           passwordFavorites: state.passwordFavorites.filter((_, i) => i !== index),
         })),
-
-      importSettings: (data) =>
-        set((state) => ({
-          theme: (data.theme as ThemeMode) ?? state.theme,
-          passwordFavorites:
-            (data.passwordFavorites as PasswordGeneratorConfig[]) ?? state.passwordFavorites,
-        })),
     }),
     {
       name: 'passforge-settings',
@@ -54,17 +45,3 @@ export const useSettingsStore = create<SettingsState>()(
     },
   ),
 );
-
-export function exportSettings(): string {
-  const state = useSettingsStore.getState();
-  return JSON.stringify(
-    {
-      version: '1.0.0',
-      theme: state.theme,
-      passwordFavorites: state.passwordFavorites,
-      passwordGenerator: DEFAULT_PASSWORD_CONFIG,
-    },
-    null,
-    2,
-  );
-}
