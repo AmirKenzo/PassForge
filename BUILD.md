@@ -32,7 +32,7 @@ Restart terminal after install, then run `npm run tauri:build` again.
 ### Android (Capacitor)
 - [Android Studio](https://developer.android.com/studio)
 - Android SDK (API 34+)
-- Java JDK 17+
+- Java JDK 21+ (required by Capacitor 7)
 - Node.js 20+
 
 ### GitHub Actions (no local Android Studio / Rust needed)
@@ -46,7 +46,7 @@ Runs only when:
 
 Creates a **GitHub Release** with:
 - Windows NSIS installer (`.exe`) + MSI
-- Android debug APK (`app-debug.apk`)
+- Android APK (`PassForge-{version}-debug.apk`)
 
 **Recommended release flow:**
 ```bash
@@ -115,7 +115,7 @@ In Android Studio:
 ```bash
 cd android
 ./gradlew assembleDebug
-# APK: android/app/build/outputs/apk/debug/app-debug.apk
+# APK: android/app/build/outputs/apk/debug/PassForge-{version}-debug.apk
 ```
 
 ---

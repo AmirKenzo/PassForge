@@ -1,5 +1,16 @@
 apply plugin: 'com.android.application'
 
+def packageJson = new groovy.json.JsonSlurper().parseText(file("../../package.json").text)
+def appVersion = packageJson.version as String
+
+static int computeVersionCode(String version) {
+    def parts = version.tokenize('.')
+    def major = parts.size() > 0 ? parts[0].toInteger() : 0
+    def minor = parts.size() > 1 ? parts[1].toInteger() : 0
+    def patch = parts.size() > 2 ? parts[2].toInteger() : 0
+    return major * 10000 + minor * 100 + patch
+}
+
 android {
     namespace "dev.passforge.app"
     compileSdk rootProject.ext.compileSdkVersion
@@ -7,8 +18,8 @@ android {
         applicationId "dev.passforge.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode computeVersionCode(appVersion)
+        versionName appVersion
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
@@ -21,6 +32,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+}
+
+android.applicationVariants.configureEach { variant ->
+    variant.outputs.configureEach { output ->
+        def buildType = variant.buildType.name
+        output.outputFileName = buildType == "release"
+            ? "PassForge-${variant.versionName}.apk"
+            : "PassForge-${variant.versionName}-${buildType}.apk"
     }
 }
 
