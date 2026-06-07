@@ -9,8 +9,6 @@ import {
   CheckCircle2,
   Zap,
   Globe,
-  Smartphone,
-  Monitor,
   ShieldCheck,
   BookOpen,
   User,
@@ -35,8 +33,7 @@ import {
 } from '@/components/ui/accordion';
 import { LandingHeader } from '@/components/layout/Header';
 import { TOOLS } from '@/config/tools';
-import { DOWNLOADS } from '@/config/downloads';
-import { cn } from '@/utils/cn';
+import { PlatformDownloads } from '@/components/landing/PlatformDownloads';
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -63,33 +60,6 @@ const STATS = [
   { value: '100%', label: 'Client-Side' },
   { value: '0', label: 'Servers' },
 ];
-
-const PLATFORMS = [
-  {
-    icon: Monitor,
-    label: 'Desktop',
-    sub: 'Windows',
-    cta: 'Download for Windows',
-    href: DOWNLOADS.windows,
-    external: true,
-  },
-  {
-    icon: Globe,
-    label: 'Web',
-    sub: 'PWA',
-    cta: 'Open in browser',
-    href: '/app',
-    external: false,
-  },
-  {
-    icon: Smartphone,
-    label: 'Mobile',
-    sub: 'Android',
-    cta: 'Download APK',
-    href: DOWNLOADS.android,
-    external: true,
-  },
-] as const;
 
 const PILLARS = [
   {
@@ -368,59 +338,9 @@ export function LandingPage() {
             <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-lg">
               One codebase for web, desktop, and mobile — always local, always private.
             </p>
-            <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3 md:mx-auto md:max-w-2xl">
-              {PLATFORMS.map((platform) => {
-                const card = (
-                  <Card
-                    className={cn(
-                      'h-full transition-all',
-                      'hover:border-primary/40 hover:shadow-md',
-                      'group-hover:bg-muted/20',
-                    )}
-                  >
-                    <CardContent className="px-4 pt-6 pb-6 text-center">
-                      <platform.icon className="text-primary mx-auto mb-3 h-8 w-8" />
-                      <p className="font-semibold">{platform.label}</p>
-                      <p className="text-muted-foreground text-xs">{platform.sub}</p>
-                      <p className="text-primary mt-3 text-xs font-medium">{platform.cta}</p>
-                    </CardContent>
-                  </Card>
-                );
-
-                return platform.external ? (
-                  <a
-                    key={platform.label}
-                    href={platform.href}
-                    download
-                    className="group focus-visible:ring-ring block rounded-xl focus-visible:ring-2 focus-visible:outline-none"
-                    aria-label={`${platform.cta} — latest release`}
-                  >
-                    {card}
-                  </a>
-                ) : (
-                  <Link
-                    key={platform.label}
-                    to={platform.href}
-                    className="group focus-visible:ring-ring block rounded-xl focus-visible:ring-2 focus-visible:outline-none"
-                    aria-label={platform.cta}
-                  >
-                    {card}
-                  </Link>
-                );
-              })}
+            <div className="mt-10">
+              <PlatformDownloads />
             </div>
-            <p className="text-muted-foreground mt-6 text-sm">
-              Desktop and mobile downloads use the{' '}
-              <a
-                href={DOWNLOADS.releasesPage}
-                className="text-primary hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                latest GitHub release
-              </a>
-              .
-            </p>
           </motion.div>
         </div>
       </section>
