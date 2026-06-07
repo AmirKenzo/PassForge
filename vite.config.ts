@@ -12,9 +12,9 @@ const appVersion = JSON.parse(
 ).version as string;
 
 export default defineConfig(({ mode }) => {
-  const isGithubPages = mode === 'production';
   const isNative = mode === 'native';
-  const base = isGithubPages ? '/PassForge/' : isNative ? './' : '/';
+  // Relative base works on both github.io/PassForge/ and a custom domain root.
+  const base = process.env.BASE_PATH ?? './';
 
   return {
     base,
@@ -40,8 +40,8 @@ export default defineConfig(({ mode }) => {
                 background_color: '#0f172a',
                 display: 'standalone',
                 orientation: 'portrait-primary',
-                scope: isGithubPages ? '/PassForge/' : '/',
-                start_url: isGithubPages ? '/PassForge/' : '/',
+                scope: base,
+                start_url: base,
                 icons: [
                   { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
                   { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },

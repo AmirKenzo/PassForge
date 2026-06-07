@@ -1,17 +1,20 @@
+/** Must match the GitHub repository name for github.io project pages. */
+const GITHUB_PAGES_REPO = 'PassForge';
+
 /**
- * React Router basename must not be "./" — that breaks routing in Tauri/Capacitor.
- * GitHub Pages uses "/PassForge/" which must become "/PassForge" (no trailing slash).
+ * React Router basename for multi-host GitHub Pages deploys.
+ * - github.io → /PassForge (project subpath)
+ * - custom domain → '' (site root)
+ * - Tauri/Capacitor (native) → ''
  */
 export function getRouterBasename(): string {
-  let base = import.meta.env.BASE_URL;
-
-  if (!base || base === '/' || base === './' || base === '.') {
+  if (import.meta.env.MODE === 'native') {
     return '';
   }
 
-  if (base.endsWith('/')) {
-    base = base.slice(0, -1);
+  if (typeof window !== 'undefined' && window.location.hostname.endsWith('github.io')) {
+    return `/${GITHUB_PAGES_REPO}`;
   }
 
-  return base;
+  return '';
 }

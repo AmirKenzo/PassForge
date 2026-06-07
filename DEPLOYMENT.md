@@ -6,20 +6,22 @@
 
 1. Go to repository **Settings → Pages**
 2. Under **Build and deployment**, set Source to **GitHub Actions**
-3. Ensure the repository name matches the `base` path in `vite.config.ts` (default: `/PassForge/`)
+3. For a **custom domain**, set it under **Settings → Pages → Custom domain** and configure DNS
 
 ### Automatic deployment
 
 Every push to `main` triggers `.github/workflows/deploy-github-pages.yml`.
 
-Live URL: `https://<username>.github.io/PassForge/`
+Both URLs work from a single build:
 
-### Custom domain
+- Custom domain: `https://passforge.ak6.ir`
+- GitHub Pages: `https://<username>.github.io/PassForge/`
 
-1. Set `base: '/'` in `vite.config.ts`
-2. Update PWA manifest `scope` and `start_url` in `vite.config.ts`
-3. Add a `CNAME` file in `public/` if using a custom domain
-4. Configure DNS with your domain provider
+### Dual-domain notes
+
+- Build uses relative asset paths (`base: './'`) so JS/CSS resolve on both hosts
+- `getRouterBasename()` picks `/PassForge` on `*.github.io` and `''` on the custom domain
+- `scripts/copy-spa-fallback.mjs` copies `index.html` → `404.html` so routes like `/app` work on refresh
 
 ---
 
